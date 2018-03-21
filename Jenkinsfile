@@ -12,17 +12,8 @@ pipeline {
       }
     }
     stage('Build') {
-      parallel {
-        stage('Build') {
-          steps {
-            sh 'echo \'Huhu\''
-          }
-        }
-        stage('Error') {
-          steps {
-            error 'Ups'
-          }
-        }
+      steps {
+        sh 'echo \'Huhu\''
       }
     }
   }
