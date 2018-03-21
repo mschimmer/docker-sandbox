@@ -3,7 +3,10 @@ pipeline {
   stages {
     stage('Initialize') {
       steps {
-        waitUntil()
+        waitUntil() {
+          input(message: 'FirstInput', id: 'FirstInput', ok: 'DoIt')
+        }
+        
         echo 'huhu'
       }
     }
