@@ -12,10 +12,17 @@ pipeline {
       }
     }
     stage('Build') {
-      agent any
-      steps {
-        sleep 5
-        build 'do'
+      parallel {
+        stage('Build') {
+          steps {
+            sh 'echo \'Huhu\''
+          }
+        }
+        stage('Error') {
+          steps {
+            error 'Ups'
+          }
+        }
       }
     }
   }
