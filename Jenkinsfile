@@ -21,5 +21,13 @@ pipeline {
         slackSend(message: 'pipeline ended', failOnError: true, color: 'good')
       }
     }
+    post {
+      failure {
+        slackSend(
+                message: 'aborted ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)', 
+                color: 'failure'
+              )    
+      }
+    }
   }
 }
