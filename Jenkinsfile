@@ -16,5 +16,10 @@ pipeline {
         sh 'echo \'Huhu\''
       }
     }
+    stage('Notify') {
+      steps {
+        slackSend(message: 'pipeline ended', failOnError: true, color: 'good')
+      }
+    }
   }
 }
